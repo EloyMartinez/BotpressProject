@@ -1,0 +1,22 @@
+{
+  "name": "hello-world",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"node ./bin/www\" \"cd client && npm start\""
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "directory-tree": "^3.2.2",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "node-watch": "^0.7.3",
+    "websocket": "^1.0.34"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
