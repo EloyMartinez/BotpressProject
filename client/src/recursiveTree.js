@@ -4,11 +4,18 @@ import React, { Fragment } from "react"
 import Box from "@material-ui/core/Box"
 
 
+  
+const emptyChildren = (branch) => {
+  branch.children = [];
+  }
+
+
 
 
 export const RecursiveTree = ({ listMeta, onSelectCallback }) => {
+
     const createTree = (branch) =>
-      branch.children && (
+     (
         <TreeItem
           id={branch.id}
           key={branch.id}
@@ -18,7 +25,9 @@ export const RecursiveTree = ({ listMeta, onSelectCallback }) => {
           isSelected={branch.selected}
           label={branch.name}
         >
-          {branch.children.map((branch) => {
+          {!branch.children && emptyChildren(branch)}
+          {
+          branch.children.map((branch) => {
             return <Fragment key={branch.id}>{createTree(branch)}</Fragment>
           })}
         </TreeItem>

@@ -20,7 +20,14 @@ function App() {
   }, );
 //// if no child then doesnt display
   return (
-    <div className="App">
+  
+    <div className="App"
+    style={{
+      marginLeft: "10px",
+      marginTop: "30px",
+      textAlign: "left"
+    }}>
+      <h1 >File Explorer</h1>
      <RecursiveTree listMeta={[data]}/>    
     </div>
   );
