@@ -18,12 +18,38 @@ var myArgs = process.argv.slice(2);
 // Returns function that updates file structure
 var tree = () => dirTree(myArgs[0]);
 
+function handleWatch() {
+  myArgs.forEach((arg) => {
+    watch(arg, { recursive: true }, function (evt, name) {
+      connection
+        ? connection.send(buildObject())
+        : console.log("connection is not yet established");
+    });
+  });
+}
+
+function buildObject() {
+  var obj = { name: "", path: "", children: [] };
+  myArgs.forEach((arg) => {
+    var fileStructure = dirTree(arg);
+    if (fileStructure != null) {
+      obj.children.push(fileStructure);
+    }
+  });
+
+  return JSON.stringify(obj);
+}
+
 //This watches for changes on the file structure
-watch(myArgs[0], { recursive: true }, function (evt, name) {      ///// if no parameters then error
-  connection
-    ? connection.send(JSON.stringify(tree()))
-    : console.log("connection is not yet established"); //NOTE: Tree might be null.
-});
+try {
+  handleWatch();
+} catch (err) {
+  if (myArgs[0] == null) {
+    console.log("You have to specify a path in the console");
+  } else {
+    console.log("Unfortunately the path you typed doesn't exist");
+  }
+}
 
 // This code generates unique userid for everyuser.
 const getUniqueID = () => {
@@ -45,9 +71,7 @@ wsServer.on("request", function (request) {
   );
   connection = request.accept(null, request.origin);
   console.log("connected: " + userID);
-  console.log(typeof connection);
-  connection.send(JSON.stringify(tree()));
-
+  connection.send(buildObject());
   // This closes the conection
   connection.on("close", function (connection) {
     console.log(new Date() + " Peer " + userID + " disconnected.");
