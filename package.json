@@ -6,9 +6,6 @@
     "start": "concurrently \"node index './'\" \"cd client && npm start\""
   },
   "dependencies": {
-    "@emotion/react": "^11.8.1",
-    "@emotion/styled": "^11.8.1",
-    "@material-ui/icons": "^4.11.2",
     "directory-tree": "^3.2.2",
     "node-watch": "^0.7.3",
     "websocket": "^1.0.34"
