@@ -11,3 +11,6 @@ Execution instructions:
 3) in /botpress type '$node index.js ${desired Path1} ${desiredPath2} ...' to launch the websocket server
 4) in /botpress/client, type '$npm start' to launch the react client
 5) The File Explorer will be accessible at 'http://localhost:3000/'
+
+
+NOTE: If the server is stopped and relaunched to update the path, the webpage has to be reloaded to refresh the websocket conection
