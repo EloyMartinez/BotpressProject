@@ -10,6 +10,8 @@ export const TreeItem = ({ onSelectCallback, label, isSelected, children }) => {
   const [isOpen, toggleItemOpen] = useState(null);
   const [selected, setSelected] = useState(isSelected);
 
+  if(label!==''){
+
   return (
     <div >
       <StyledTreeItem>
@@ -49,5 +51,8 @@ export const TreeItem = ({ onSelectCallback, label, isSelected, children }) => {
       <StyledTreeChildren>{isOpen && children}</StyledTreeChildren>
       
     </div>
-  );
+  );}else{
+    return <StyledTreeChildren>{ children}</StyledTreeChildren>
+
+  }
 };

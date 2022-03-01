@@ -19,18 +19,21 @@ function App() {
       console.log(JSON.parse(message.data));
       setData(JSON.parse(message.data));
     };
-  }, );
-//// if no child then doesnt display
+  },[] );
+
+
   return (
   
     <div className="App"
     style={styles.mainContainer}>
       <h1 style={styles.titleContainer}>File Explorer</h1>
+     
+     {data.name === '' ?
      <RecursiveTree listMeta={[data]}  style={{
       marginLeft: "10px",
       marginTop: "30px",
       alignItems: "center"
-    }}/>    
+    }}/>  : 'Loading...'}
     </div>
   );
 }

@@ -32,6 +32,14 @@ export const RecursiveTree = ({ listMeta, onSelectCallback }) => {
           })}
         </TreeItem>
       )
+
+      const root = (branch) => {
+        if (branch.children){
+        branch.children.map((branch) => {
+          console.log('hey',branch)
+          return <Fragment key={branch.id}>{createTree(branch)}</Fragment>
+        })}}  
+      
   
     return (
       <Box  >
@@ -40,7 +48,8 @@ export const RecursiveTree = ({ listMeta, onSelectCallback }) => {
             marginLeft: "10px",
             marginTop: "30px",
             alignItems: "center"
-          }}>{createTree(branch)}</Box>
+          }}>{ createTree(branch) }
+          </Box>
         ))}
       </Box>
     )
