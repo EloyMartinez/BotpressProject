@@ -34,9 +34,13 @@ export const RecursiveTree = ({ listMeta, onSelectCallback }) => {
       )
   
     return (
-      <Box>
+      <Box  >
         {listMeta.map((branch, i) => (
-          <Box key={i}>{createTree(branch)}</Box>
+          <Box key={i}  style={{
+            marginLeft: "10px",
+            marginTop: "30px",
+            alignItems: "center"
+          }}>{createTree(branch)}</Box>
         ))}
       </Box>
     )

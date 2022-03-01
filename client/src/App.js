@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import {RecursiveTree} from './recursiveTree'
+import {styles} from './styles'
+
 
 const client = new W3CWebSocket("ws://127.0.0.1:8000");
 
@@ -22,13 +24,13 @@ function App() {
   return (
   
     <div className="App"
-    style={{
+    style={styles.mainContainer}>
+      <h1 style={styles.titleContainer}>File Explorer</h1>
+     <RecursiveTree listMeta={[data]}  style={{
       marginLeft: "10px",
       marginTop: "30px",
-      textAlign: "left"
-    }}>
-      <h1 >File Explorer</h1>
-     <RecursiveTree listMeta={[data]}/>    
+      alignItems: "center"
+    }}/>    
     </div>
   );
 }
