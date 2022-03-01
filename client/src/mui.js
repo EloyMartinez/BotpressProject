@@ -1,7 +1,4 @@
-import React, { Fragment, useState } from "react"
-import { styled, makeStyles } from "@material-ui/core/styles"
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
-import ChevronRightIcon from "@material-ui/icons/ChevronRight"
+import { styled } from "@material-ui/core/styles"
 import Box from "@material-ui/core/Box"
 
 // styles
